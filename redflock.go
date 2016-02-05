@@ -52,7 +52,8 @@ func main() {
 
 	args := flag.Args()
 	if len(args) < 2 {
-		fatal("lock-name and command required")
+		flag.Usage()
+		os.Exit(1)
 	}
 
 	redlock := getRedlock(args[0], *addresses, *ttl, *tries, *delay)
